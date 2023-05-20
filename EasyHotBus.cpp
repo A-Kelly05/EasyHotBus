@@ -1,9 +1,8 @@
 #include<iostream>
-#include "easyhotbusF.cpp"
+#include "principalMenu.cpp"
 using namespace std;
 
 int main()
 {
-    StartBuses(); 
     return 0;
 }

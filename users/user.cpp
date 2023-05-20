@@ -148,7 +148,7 @@ int menuUser()
     int op;
 
     gotoxy(10, 5);
-    cout << " Informacion administrativa - Transporte David\n";
+    cout << " Informacion Usuario - Transporte David\n";
     gotoxy(15, 6);
     cout << "Cantidad de registros: " << lastReg << endl;
     gotoxy(10, 9);
@@ -342,12 +342,10 @@ void readUser()
 int calcUltReg(FILE *archivo)
 {
     int tam_archivo, num_usuarios;
-    // Obtener el tamaño del archivo
     fseek(archivo, 0, SEEK_END);
     tam_archivo = ftell(archivo);
     rewind(archivo);
 
-    // Calcular el número de alumnos
     num_usuarios = tam_archivo / sizeof(Username);
     return num_usuarios;
 }

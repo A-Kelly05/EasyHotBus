@@ -3,6 +3,12 @@
 #include<vector>
 
 struct Schedulehotbus{
+    /*horarioId
+      busId
+      origen
+      destino
+      hora de origen
+      hora de destino*/
     std::string busName;
     std::string destination;
     std::vector<std::string> departureTime;

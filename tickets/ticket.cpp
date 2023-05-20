@@ -1,6 +1,38 @@
 #include <cstdlib>
 #include<iostream>
 using namespace std;
+typedef struct 
+{
+	int id;
+	char origen[50];
+	char destino[50];
+	float price;
+} priceTicket;
+typedef struct
+{
+    int day;
+    int month;
+    int year;
+} date;
+typedef struct
+{
+ int idF;
+ date dateF;
+ int idhorario;
+ int cantT;
+ float price;
+ priceTicket ticket;
+}factura;
+
+priceTicket pt[14];
+ 
+ /*Funcioces
+ 1. add destiny
+ 2. edit destiny
+ 3. search destiny
+ 4. add Factura
+ 5. mostar monto del dia
+ 6. mostrar monto por fecha*/
 
 void calculadora();
 
@@ -12,6 +44,7 @@ void calculadora() {
 	int cantidad, sentido = 0, viaje = 0;
 	float total;
 	do{
+		cout << "Asignar pasajes\n";
 		cout << "Por favor selecione su ruta " << endl;
 		cout << "1. Nagarote-Managua" << endl;
 		cout << "2. Managua-Nagarote" << endl;

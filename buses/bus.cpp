@@ -1,68 +1,25 @@
 #include <iostream>
 #include <stdio.h>
 #include <string.h>
-#include "auxiliar.h"
+#include "../auxiliar.h"
 #define MAX 100
 using namespace std;
 
 typedef struct
 {
-    int day;
-    int month;
-    int year;
-} date;
-typedef struct
-{
-    char idUsu[9];
-    char name[30];
-    char lastname[30];
-    date birth;
-    char idCard[16];
-    int Bus;
-    char job[15];
-    float Salary;
-} Username;
-
-Username Users[MAX];
-int lastReg = 0;
-
-typedef struct
-{
-    char busNum[5];
+    char busId[5];
     char busPlate[8];
     int busYear;
     int Capacity;
     char busmotor[50];
     char bustransmission[50];
     char busWheel[10];
-    char busjobs[30];
+    char busjobs[50];
     float busKM;
 } Bus;
 
 Bus Buses[MAX];
 int lastRegBus = 0;
-
-/*USER*/
-    /*Create*/
-    void addUser(Username use);
-    /*Read*/
-    void showUser(int pos);
-    int isUser(char id[]);
-    void showUsers();
-    void startUser(int pos);
-    Username getUser(int pos);
-    /*Update*/
-    void updateUser(Username use, int pos);
-    /*Delete*/
-    void deleteUser(int pos);
-    /*Menu User*/
-    int menuUser();
-    void startUse();
-    /*Archivos User*/
-    FILE *UserRegistration;
-    void saveUser();
-    void readUser();
-    int calcUltReg(FILE *archivo);
 
 /*Bus Regiter*/
     /*Create*/
@@ -79,12 +36,16 @@ int lastRegBus = 0;
     void deleteBus(int pos);
     /*Menu User*/
     int menuBus();
-    void Start2();
+    void StartBuses();
     /*Archivos User*/
     FILE *BusesRegistration;
     void saveBus();
     void readBus();
     int calcUltRegBus(FILE *archivo_bus);
+
+/*Menu Archivo Principal*/
+void menuPrincipal();
+int principal();
 
 void addBus(Bus bus)
 {
@@ -95,7 +56,7 @@ void addBus(Bus bus)
 void showBus(int pos)
 {
     gotoxy(60,5);
-    cout << "Bus David #: " << Buses[pos].busNum << endl;
+    cout << "Bus David #: " << Buses[pos].busId << endl;
     gotoxy(60,6);
     cout << "Placa: " << Buses[pos].busPlate<< endl;
     gotoxy(60,7);
@@ -124,7 +85,7 @@ int isBus(char num[])
     int posicion = 0;
     for (int i = 0; i < lastRegBus; i++)
     {
-        if (strcmp(num, Buses[i].busNum) == 0)
+        if (strcmp(num, Buses[i].busId) == 0)
         {
             posicion = i;
             break;
@@ -171,7 +132,7 @@ void deleteBus(int pos)
 
 void startBus(int pos)
 {
-    strcpy(Buses[pos].busNum, "");
+    strcpy(Buses[pos].busId, "");
     strcpy(Buses[pos].busPlate, "");
     Buses[pos].busYear = 0;
     Buses[pos].Capacity = 0;
@@ -214,7 +175,7 @@ int menuBus()
 void StartBuses()
 {
     int op, pos, resp;
-    char busNum[5];
+    char busId[5];
     Bus bus;
     readBus();
     do
@@ -245,7 +206,7 @@ void StartBuses()
             gotoxy(60, 13);
             cout << "KM Recorridos: ";
             gotoxy(73, 5);
-            scanf(" %[^\n]", bus.busNum);
+            scanf(" %[^\n]", bus.busId);
             gotoxy(67, 6);
             scanf(" %[^\n]", bus.busPlate);
             gotoxy(65, 7);
@@ -312,8 +273,8 @@ void StartBuses()
             system("cls||clear");
             gotoxy(60,4);
             cout << "Escribe el # a buscar: ";
-            scanf(" %[^\n]", busNum);
-            pos = isBus(busNum);
+            scanf(" %[^\n]", busId);
+            pos = isBus(busId);
             showBus(pos);
             gotoxy(60,13);
             cout << "DATOS A EDITAR\n";
@@ -336,7 +297,7 @@ void StartBuses()
             gotoxy(60, 22);
             cout << "KM Recorridos: ";
             gotoxy(73, 14);
-            scanf(" %[^\n]", bus.busNum);
+            scanf(" %[^\n]", bus.busId);
             gotoxy(68, 15);
             scanf(" %[^\n]", bus.busPlate);
             gotoxy(65, 16);
@@ -369,11 +330,11 @@ void StartBuses()
             }
             gotoxy(60, 5);
             cout << "Escribe el # del Bus: ";
-            cin >> busNum;
-            pos = isBus(busNum);
+            cin >> busId;
+            pos = isBus(busId);
             bus = getBus(pos);
             gotoxy(60, 6);
-            cout << "¿Realmente deseas eliminar el Bus #" << bus.busNum<< "?\n";
+            cout << "¿Realmente deseas eliminar el Bus #" << bus.busId<< "?\n";
             gotoxy(60, 7);
             cout << "Escribe 1 para SI o 2 para NO: ";
             gotoxy(91, 7);
@@ -395,8 +356,8 @@ void StartBuses()
             system("cls||clear");
             gotoxy(60, 5);
             cout << "Escribe el # a buscar: ";
-            scanf(" %[^\n]", busNum);
-            pos = isBus(busNum);
+            scanf(" %[^\n]", busId);
+            pos = isBus(busId);
             showBus(pos);
             system("pause");
             break;
@@ -440,12 +401,37 @@ void readBus()
 int calcUltRegBus(FILE *archivo_bus)
 {
     int tam_archivo_bus, num_Buses;
-    // Obtener el tamaño del archivo
+   
     fseek(archivo_bus, 0, SEEK_END);
     tam_archivo_bus = ftell(archivo_bus);
     rewind(archivo_bus);
 
-    // Calcular el número de alumnos
+   
     num_Buses = tam_archivo_bus / sizeof(Bus);
     return num_Buses;
 }
+
+int principal()
+{
+    int op;
+
+    gotoxy(60, 5);
+    cout << " Easy Hot Bus Menu\n";
+    gotoxy(60, 9);
+    cout << " 1. Informacion administrativa\n";
+    gotoxy(60, 10);
+    cout << " 2. Informacion Usuario\n";
+    gotoxy(60, 11);
+    cout << " 3. Calculadora\n";
+    gotoxy(60, 12);
+    cout << " 4. Horario de los buses";
+    gotoxy(60, 13);
+    cout << " 7. Salir \n";
+    gotoxy(60, 14);
+    cout << " Digite la opcion: ";
+    gotoxy(79, 14);
+    cin >> op;
+    return op;
+}
+
+
