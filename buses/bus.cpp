@@ -99,11 +99,13 @@ void showBuses()
     system("cls||clear");
     if (lastRegBus == 0)
     {
+        gotoxy(60, 5);
         cout << "No hay registros\n";
         return;
     }
     for (int i = 0; i < lastRegBus; i++)
     {
+        gotoxy(60, 4);
         cout<< "=========================\n";
         showBus(i);
     }
@@ -119,6 +121,7 @@ void deleteBus(int pos)
 {
     if (pos == lastRegBus)
     {
+        gotoxy(60, 5);
         cout << "No hay registro\n";
         return;
     }
@@ -410,28 +413,3 @@ int calcUltRegBus(FILE *archivo_bus)
     num_Buses = tam_archivo_bus / sizeof(Bus);
     return num_Buses;
 }
-
-int principal()
-{
-    int op;
-
-    gotoxy(60, 5);
-    cout << " Easy Hot Bus Menu\n";
-    gotoxy(60, 9);
-    cout << " 1. Informacion administrativa\n";
-    gotoxy(60, 10);
-    cout << " 2. Informacion Usuario\n";
-    gotoxy(60, 11);
-    cout << " 3. Calculadora\n";
-    gotoxy(60, 12);
-    cout << " 4. Horario de los buses";
-    gotoxy(60, 13);
-    cout << " 7. Salir \n";
-    gotoxy(60, 14);
-    cout << " Digite la opcion: ";
-    gotoxy(79, 14);
-    cin >> op;
-    return op;
-}
-
-
