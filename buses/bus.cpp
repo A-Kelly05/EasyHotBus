@@ -22,26 +22,26 @@ Bus Buses[MAX];
 int lastRegBus = 0;
 
 /*Bus Regiter*/
-    /*Create*/
-    void addBus(Bus bus);
-    /*Read*/
-    void showBus(int pos);
-    int isBus(char id[]);
-    void showBuses();
-    void startBus(int pos);
-    Bus getBus(int pos);
-    /*Update*/
-    void updateBus(Bus bus, int pos);
-    /*Delete*/
-    void deleteBus(int pos);
-    /*Menu User*/
-    int menuBus();
-    void StartBuses();
-    /*Archivos User*/
-    FILE *BusesRegistration;
-    void saveBus();
-    void readBus();
-    int calcUltRegBus(FILE *archivo_bus);
+/*Create*/
+void addBus(Bus bus);
+/*Read*/
+void showBus(int pos);
+int isBus(char id[]);
+void showBuses();
+void startBus(int pos);
+Bus getBus(int pos);
+/*Update*/
+void updateBus(Bus bus, int pos);
+/*Delete*/
+void deleteBus(int pos);
+/*Menu User*/
+int menuBus();
+void StartBuses();
+/*Archivos User*/
+FILE *BusesRegistration;
+void saveBus();
+void readBus();
+int calcUltRegBus(FILE *archivo_bus);
 
 /*Menu Archivo Principal*/
 void menuPrincipal();
@@ -55,24 +55,24 @@ void addBus(Bus bus)
 
 void showBus(int pos)
 {
-    gotoxy(60,5);
+    gotoxy(60, 5);
     cout << "Bus David #: " << Buses[pos].busId << endl;
-    gotoxy(60,6);
-    cout << "Placa: " << Buses[pos].busPlate<< endl;
-    gotoxy(60,7);
-    cout << "Año: " << Buses[pos].busYear<< endl;
-    gotoxy(60,8);
+    gotoxy(60, 6);
+    cout << "Placa: " << Buses[pos].busPlate << endl;
+    gotoxy(60, 7);
+    cout << "Año: " << Buses[pos].busYear << endl;
+    gotoxy(60, 8);
     cout << "Capacidad: " << Buses[pos].Capacity << endl;
-    gotoxy(60,9);
+    gotoxy(60, 9);
     cout << "Motor: " << Buses[pos].busmotor << endl;
-    gotoxy(60,10);
-    cout << "Trasmisión: " << Buses[pos].bustransmission<< endl;
-    gotoxy(60,11);
-    cout << "Model de Llantas: " << Buses[pos].busWheel<< endl;
-    gotoxy(60,12);
-    cout << "Trabajadores " << Buses[pos].busjobs<< endl;
-    gotoxy(60,13);
-    cout << "KM Recorridos " << Buses[pos].busKM<< endl;
+    gotoxy(60, 10);
+    cout << "Trasmisión: " << Buses[pos].bustransmission << endl;
+    gotoxy(60, 11);
+    cout << "Model de Llantas: " << Buses[pos].busWheel << endl;
+    gotoxy(60, 12);
+    cout << "Trabajadores " << Buses[pos].busjobs << endl;
+    gotoxy(60, 13);
+    cout << "KM Recorridos " << Buses[pos].busKM << endl;
 }
 
 Bus getBus(int pos)
@@ -85,7 +85,7 @@ int isBus(char num[])
     int posicion = 0;
     for (int i = 0; i < lastRegBus; i++)
     {
-        if (strcmp(num, Buses[i].busId) == 0)
+        if (strcmp(num, Buse[i].busId) == 0)
         {
             posicion = i;
             break;
@@ -106,10 +106,10 @@ void showBuses()
     for (int i = 0; i < lastRegBus; i++)
     {
         gotoxy(60, 4);
-        cout<< "=========================\n";
+        cout << "=========================\n";
         showBus(i);
     }
-    cout<< "Ultimo registro...\n";
+    cout << "Ultimo registro...\n";
 }
 
 void updateBus(Bus bus, int pos)
@@ -184,7 +184,7 @@ void StartBuses()
     do
     {
         system("cls||clear");
-        
+
         op = menuBus();
         switch (op)
         {
@@ -231,55 +231,55 @@ void StartBuses()
 
             break;
 
-        case 2: 
+        case 2:
             system("cls||clear");
-            gotoxy(71,5);
+            gotoxy(71, 5);
             cout << "Mantenimiento de Bus\n";
-            gotoxy(60,7);
-            cout<< "Cambio de Aceite: 5000 kms\n";
-            gotoxy(60,8);
-            cout<< "Cambio de filtro de Aceite: 5000 kms\n";
-            gotoxy(60,9);
-            cout<< "Cambio de filtro de Combustible: 10000 kms\n";
-            gotoxy(60,10);
-            cout<< "Cambio de filtro de Aire: 40000 kms\n";
-            gotoxy(60,11);
-            cout<< "Engrase General: 2000 kms\n";
-            gotoxy(60,12);
-            cout<< "Engrase de Patentes: 40000 kms\n";
-            gotoxy(60,13);
-            cout<< "Ajuste de Embrague: 7200 kms\n";
-            gotoxy(60,14);
-            cout<< "Mantenimiento Sistema Eléctrico: 25000 kms\n";
-            gotoxy(60,15);
-            cout<< "Scanner al Sistema Electronico: 65000 kms\n";
-            gotoxy(60,16);
-            cout<< "Rotacion de Llantas: 30000 kms\n";
-            gotoxy(60,17);
-            cout<< "Cambio de Llantas: 75000 kms\n";
-            gotoxy(60,18);
-            cout<< "Revision de Niveles de Aceite de Diferencial: 14400 kms\n";
-            gotoxy(60,19);
-            cout<< "Revision de Niveles de Aceite de Caja/Transmision: 14400 kms\n";
-            gotoxy(60,20);
-            cout<< "Revision de Revisión de Yugos y Cruz Cardánica: 4000 kms\n";
-            gotoxy(60,21);
-            cout<< "Revision de Fricciones: 28800 kms\n";
-            gotoxy(60,22);
-            cout<< "Revision de Alineación y Balanceo: 57600 kms\n";
-            gotoxy(60,22);
+            gotoxy(60, 7);
+            cout << "Cambio de Aceite: 5000 kms\n";
+            gotoxy(60, 8);
+            cout << "Cambio de filtro de Aceite: 5000 kms\n";
+            gotoxy(60, 9);
+            cout << "Cambio de filtro de Combustible: 10000 kms\n";
+            gotoxy(60, 10);
+            cout << "Cambio de filtro de Aire: 40000 kms\n";
+            gotoxy(60, 11);
+            cout << "Engrase General: 2000 kms\n";
+            gotoxy(60, 12);
+            cout << "Engrase de Patentes: 40000 kms\n";
+            gotoxy(60, 13);
+            cout << "Ajuste de Embrague: 7200 kms\n";
+            gotoxy(60, 14);
+            cout << "Mantenimiento Sistema Eléctrico: 25000 kms\n";
+            gotoxy(60, 15);
+            cout << "Scanner al Sistema Electronico: 65000 kms\n";
+            gotoxy(60, 16);
+            cout << "Rotacion de Llantas: 30000 kms\n";
+            gotoxy(60, 17);
+            cout << "Cambio de Llantas: 75000 kms\n";
+            gotoxy(60, 18);
+            cout << "Revision de Niveles de Aceite de Diferencial: 14400 kms\n";
+            gotoxy(60, 19);
+            cout << "Revision de Niveles de Aceite de Caja/Transmision: 14400 kms\n";
+            gotoxy(60, 20);
+            cout << "Revision de Revisión de Yugos y Cruz Cardánica: 4000 kms\n";
+            gotoxy(60, 21);
+            cout << "Revision de Fricciones: 28800 kms\n";
+            gotoxy(60, 22);
+            cout << "Revision de Alineación y Balanceo: 57600 kms\n";
+            gotoxy(60, 22);
             cout << "Revision de Imprevisto al Motor: 7200 kms\n";
             system("pause");
             break;
 
         case 3:
             system("cls||clear");
-            gotoxy(60,4);
+            gotoxy(60, 4);
             cout << "Escribe el # a buscar: ";
             scanf(" %[^\n]", busId);
             pos = isBus(busId);
             showBus(pos);
-            gotoxy(60,13);
+            gotoxy(60, 13);
             cout << "DATOS A EDITAR\n";
             gotoxy(60, 14);
             cout << "Bus David #:";
@@ -318,7 +318,7 @@ void StartBuses()
             gotoxy(75, 22);
             cin >> bus.busKM;
             updateBus(bus, pos);
-            gotoxy(60,23);
+            gotoxy(60, 23);
             cout << "Registro actualizado...\n";
             system("pause");
             break;
@@ -328,7 +328,7 @@ void StartBuses()
             {
                 gotoxy(60, 5);
                 cout << "No hay nada que eliminar\n";
-            system("pause");
+                system("pause");
                 break;
             }
             gotoxy(60, 5);
@@ -337,7 +337,7 @@ void StartBuses()
             pos = isBus(busId);
             bus = getBus(pos);
             gotoxy(60, 6);
-            cout << "¿Realmente deseas eliminar el Bus #" << bus.busId<< "?\n";
+            cout << "¿Realmente deseas eliminar el Bus #" << bus.busId << "?\n";
             gotoxy(60, 7);
             cout << "Escribe 1 para SI o 2 para NO: ";
             gotoxy(91, 7);
@@ -404,12 +404,11 @@ void readBus()
 int calcUltRegBus(FILE *archivo_bus)
 {
     int tam_archivo_bus, num_Buses;
-   
+
     fseek(archivo_bus, 0, SEEK_END);
     tam_archivo_bus = ftell(archivo_bus);
     rewind(archivo_bus);
 
-   
     num_Buses = tam_archivo_bus / sizeof(Bus);
     return num_Buses;
 }
