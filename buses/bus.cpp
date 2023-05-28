@@ -34,18 +34,14 @@ Bus getBus(int pos);
 void updateBus(Bus bus, int pos);
 /*Delete*/
 void deleteBus(int pos);
-/*Menu User*/
+/*Menu Bus*/
 int menuBus();
 void StartBuses();
-/*Archivos User*/
+/*Archivos Bus*/
 FILE *BusesRegistration;
 void saveBus();
 void readBus();
 int calcUltRegBus(FILE *archivo_bus);
-
-/*Menu Archivo Principal*/
-void menuPrincipal();
-int principal();
 
 void addBus(Bus bus)
 {
@@ -85,7 +81,7 @@ int isBus(char num[])
     int posicion = 0;
     for (int i = 0; i < lastRegBus; i++)
     {
-        if (strcmp(num, Buse[i].busId) == 0)
+        if (strcmp(num, Buses[i].busId) == 0)
         {
             posicion = i;
             break;
@@ -383,14 +379,14 @@ void StartBuses()
 
 void saveBus()
 {
-    BusesRegistration = fopen("datos.bin", "wb");
+    BusesRegistration = fopen("bus.bin", "wb");
     fwrite(Buses, sizeof(Bus), lastRegBus, BusesRegistration);
     fclose(BusesRegistration);
 }
 
 void readBus()
 {
-    BusesRegistration = fopen("datos.bin", "rb");
+    BusesRegistration = fopen("bus.bin", "rb");
     if (BusesRegistration == NULL)
     {
         return;
