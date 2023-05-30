@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "../auxiliar.h"
-#include "../buses/bus.cpp"
+#include "../buses/busF.cpp"
 #define MAX 100
 using namespace std;
 
@@ -180,7 +180,7 @@ void Schedule()
             cout << "Escribe el # del Bus: ";
             cin >> busId;
             pos = isBus(busId);
-            bus = getBus(pos);
+            bus;
             busNum = bus.busId;
             Horario.busId = busNum;
             gotoxy(60, 5);
