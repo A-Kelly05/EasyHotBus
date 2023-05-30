@@ -55,23 +55,23 @@ void addUser(Username use){
 
 void showUser(int pos)
 {
-    gotoxy(60,5);
+    gotoxy4(60,5);
     cout << "ID: " << Users[pos].idUse << endl;
-    gotoxy(60,6);
+    gotoxy4(60,6);
     cout << "NOMBRE: " << Users[pos].name << endl;
-    gotoxy(60,7);
+    gotoxy4(60,7);
     cout << "APELLIDOS: " << Users[pos].lastname << endl;
-    gotoxy(60,8);
+    gotoxy4(60,8);
     cout << "FECHA DE NACIMIENTO: " << Users[pos].birth.day << "/" << Users[pos].birth.month << "/" << Users[pos].birth.year << endl;
-    gotoxy(60,9);
+    gotoxy4(60,9);
     cout << "CEDULA: " << Users[pos].idCard << endl;
-    gotoxy(60,10);
+    gotoxy4(60,10);
     cout << "BUS: " << Users[pos].Bus << endl;
-    gotoxy(60,11);
+    gotoxy4(60,11);
     cout << "TRABAJO: " << Users[pos].job << endl;
-    gotoxy(60,12);
+    gotoxy4(60,12);
     cout << "SALARIO: " << Users[pos].Salary << endl;
-    gotoxy(60,13);
+    gotoxy4(60,13);
 }
 
 Username getUser(int pos)
@@ -98,13 +98,13 @@ void showUsers()
     system("cls||clear");
     if (lastReg == 0)
     {
-        gotoxy(60,4);
+        gotoxy4(60,4);
         cout << "No hay registros\n";
         return;
     }
     for (int i = 0; i < lastReg; i++)
     {
-        gotoxy(60,4);
+        gotoxy4(60,4);
         cout<< "=========================\n";
         showUser(i);
     }
@@ -149,25 +149,25 @@ int menuUser()
 {
     int op;
 
-    gotoxy(60, 5);
+    gotoxy4(60, 5);
     cout << " Informacion Usuario - Transporte David\n";
-    gotoxy(70, 6);
+    gotoxy4(70, 6);
     cout << "Cantidad de registros: " << lastReg << endl;
-    gotoxy(60, 9);
+    gotoxy4(60, 9);
     cout << " 1. Agregar Usuario \n";
-    gotoxy(60, 10);
+    gotoxy4(60, 10);
     cout << " 2. Editar Usuario \n";
-    gotoxy(60, 11);
+    gotoxy4(60, 11);
     cout << " 3. Eliminar Usuario \n";
-    gotoxy(60, 12);
+    gotoxy4(60, 12);
     cout << " 4. Buscar Usuario \n";
-    gotoxy(60, 13);
+    gotoxy4(60, 13);
     cout << " 5. Mostrar todos los Usuarios \n";
-    gotoxy(60, 14);
+    gotoxy4(60, 14);
     cout << " 6. Salir \n";
-    gotoxy(60, 15);
+    gotoxy4(60, 15);
     cout << " Digite la opcion: ";
-    gotoxy(79, 15);
+    gotoxy4(79, 15);
     cin >> op;
     return op;
 }
@@ -184,37 +184,37 @@ int menuUser()
         switch (op){
             case 1:
                 system("cls || clear");
-                gotoxy(60, 5);
+                gotoxy4(60, 5);
                 cout << "ID: ";
-                gotoxy(60, 6);
+                gotoxy4(60, 6);
                 cout << "NOMBRE: ";
-                gotoxy(60, 7);
+                gotoxy4(60, 7);
                 cout << "APELLIDOS: ";
-                gotoxy(60, 8);
+                gotoxy4(60, 8);
                 cout << "FECHA DE NACIMIENTO dd/MM/yyyy: ";
-                gotoxy(60, 9);
+                gotoxy4(60, 9);
                 cout << "CEDULA: ";
-                gotoxy(60, 10);
+                gotoxy4(60, 10);
                 cout << "BUS: ";
-                gotoxy(60, 11);
+                gotoxy4(60, 11);
                 cout << "TRABAJO: ";
-                gotoxy(60, 12);
+                gotoxy4(60, 12);
                 cout << "SALARIO: ";
-                gotoxy(65, 5);
+                gotoxy4(65, 5);
                 scanf(" %[^\n]", Use.idUse);
-                gotoxy(69, 6);
+                gotoxy4(69, 6);
                 scanf(" %[^\n]", Use.name);
-                gotoxy(72, 7);
+                gotoxy4(72, 7);
                 scanf(" %[^\n]", Use.lastname);
-                gotoxy(92, 8);
+                gotoxy4(92, 8);
                 scanf("%d/%d/%d", &Use.birth.day, &Use.birth.month, &Use.birth.year);
-                gotoxy(70, 9);
+                gotoxy4(70, 9);
                 scanf(" %[^\n]", Use.idCard);
-                gotoxy(66, 10);
+                gotoxy4(66, 10);
                 scanf("%d", &Use.Bus);
-                gotoxy(70, 11);
+                gotoxy4(70, 11);
                 scanf(" %[^\n]", Use.job);
-                gotoxy(70, 12);
+                gotoxy4(70, 12);
                 scanf("%f", &Use.Salary);
                 addUser(Use);
                 system("pause");
@@ -222,49 +222,48 @@ int menuUser()
                 break;
             case 2:
                 system("cls||clear");
-                gotoxy(60,4);
+                gotoxy4(60,4);
                 cout << "Escribe el ID a buscar: ";
-                gotoxy(85,4);
+                gotoxy4(85,4);
                 scanf(" %[^\n]", id);
                 pos = isUser(id);
                 showUser(pos);
-                gotoxy(60,13);
+                gotoxy4(60,13);
                 cout << "DATOS A EDITAR\n";
-                gotoxy(60,14);
+                gotoxy4(60,14);
                 cout << "ID: ";
-                gotoxy(60,15);
+                gotoxy4(60,15);
                 cout << "NOMBRE: ";
-                gotoxy(60,16);
+                gotoxy4(60,16);
                 cout << "APELLIDOS: ";
-                gotoxy(60,17);
+                gotoxy4(60,17);
                 cout << "FECHA DE NACIMIENTO: ";
-                gotoxy(60,18);
+                gotoxy4(60,18);
                 cout << "CEDULA: ";
-                gotoxy(60,19);
+                gotoxy4(60,19);
                 cout << "BUS: ";
-                gotoxy(60,20);
+                gotoxy4(60,20);
                 cout << "TRABAJO: ";
-                gotoxy(60,21);
+                gotoxy4(60,21);
                 cout << "SALARIO: ";
-                gotoxy(65,14);
+                gotoxy4(65,14);
                 scanf(" %[^\n]", Use.idUse);
-                gotoxy(69,15);
+                gotoxy4(68,15);
                 scanf(" %[^\n]", Use.name);
-                gotoxy(72,16);
+                gotoxy4(72,16);
                 scanf(" %[^\n]", Use.lastname);
-                gotoxy(92,18);
+                gotoxy4(82,17);
                 scanf("%d/%d/%d", &Use.birth.day, &Use.birth.month, &Use.birth.year);
-                gotoxy(70,20);
+                gotoxy4(69,18);
                 scanf(" %[^\n]", Use.idCard);
-                gotoxy(66, 21);
+                gotoxy4(66,19);
                 scanf("%d", &Use.Bus);
-                gotoxy(70, 22);
+                gotoxy4(70,20);
                 scanf(" %[^\n]", Use.job);
-                gotoxy(70, 23);
+                gotoxy4(70,21);
                 scanf("%f", &Use.Salary);
                 updateUser(Use, pos);
-                gotoxy(14,21);
-                gotoxy(60, 25);
+                gotoxy4(60,24);
                 cout << "Registro actualizado...\n";
                 system("pause");
                 break;
@@ -272,40 +271,40 @@ int menuUser()
                 system("cls||clear");
                 if (lastReg == 0)
                 {
-                    gotoxy(60, 5);
+                    gotoxy4(60, 5);
                     cout << "No hay nada que eliminar\n";
                     break;
                 }
-                gotoxy(60, 5);
+                gotoxy4(60, 5);
                 cout << "Escribe el ID del usuario: ";
-                gotoxy(89, 5);
+                gotoxy4(89, 5);
                 cin >> id;
                 pos = isUser(id);
                 Use = getUser(pos);
-                gotoxy(60, 7);
+                gotoxy4(60, 7);
                 cout << "¿Realmente deseas eliminar el usuario: " << Use.name << " " << Use.lastname << "?\n";
-                gotoxy(60, 8);
+                gotoxy4(60, 8);
                 cout << "Escribe 1 para SI o 2 para NO: ";
-                gotoxy(92, 8);
+                gotoxy4(92, 8);
                 cin >> resp;
                 if (resp == 1)
                 {
                     deleteUser(pos);
-                    gotoxy(60, 10);
+                    gotoxy4(60, 10);
                     cout << "Registro Eliminado... \n";
                 }
                 else
                 {
-                    gotoxy(60, 10);
+                    gotoxy4(60, 10);
                     cout << "Operaciòn cancelada.... \n";
                 }
                 system("pause");
                 break;
             case 4:
                 system("cls||clear");
-                gotoxy(60, 4);
+                gotoxy4(60, 4);
                 cout << "Escribe el ID a buscar: ";
-                gotoxy(84, 4);
+                gotoxy4(84, 4);
                 scanf(" %[^\n]", id);
                 pos = isUser(id);
                 showUser(pos);
@@ -320,7 +319,7 @@ int menuUser()
                  break;
             default:
                 system("clear||cls");
-                gotoxy(60, 4);
+                gotoxy4(60, 4);
                 cout << "Opcion invalida \n";
                 system("pause");
                 break;
