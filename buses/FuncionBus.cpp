@@ -109,8 +109,9 @@ void showBuses()
         gotoxy1(60, 4);
         cout << "=========================\n";
         showBus(i);
+        gotoxy1(60, 15);
+        cout << "Ultimo registro...\n";
     }
-    cout << "Ultimo registro...\n";
 }
 
 void updateBus(Colectivo bus, int pos)
@@ -358,7 +359,7 @@ void StartBuses()
             break;
         case 5:
             system("cls||clear");
-            gotoxy1(60, 5);
+            gotoxy1(60, 4);
             cout << "Escribe el # a buscar: ";
             scanf(" %[^\n]", busId);
             pos = isBus(busId);
