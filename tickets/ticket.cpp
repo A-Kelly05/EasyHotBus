@@ -6,6 +6,7 @@
 
 #define MAX 14
 using namespace std;
+
 typedef struct
 {
     char id[5];
@@ -13,12 +14,14 @@ typedef struct
     char destino[50];
     float price;
 } priceTicket;
+
 typedef struct
 {
     int day;
     int month;
     int year;
 } date;
+
 typedef struct
 {
     char idF[5];
@@ -36,28 +39,34 @@ int lastRegDestiny = 0;
 int lastRegFact = 0;
 
 /*Destino*/
+
 void addDestiny(priceTicket destiny);
 void editDestiny();
 int searchDestiny(char id[]);
 void ShowDestiny(int pos);
 void ShowAll();
+
 /*Factura*/
 void addFactura(factura F);
 int searchFactura(char id[]);
 void printFactura(int pos, int pos1, float price);
+
 /*Dia*/
 void showDay(int pos);
 void showDate(date thisDate);
+
 /*Archivo Factura*/
 FILE *FacturaRegistration;
 void saveFactura();
 void readFactura();
 int calcUltRegFactura(FILE *archivo_factura);
+
 /*Archivo Destiny*/
 FILE *DestinyRegistration;
 void saveDestiny();
 void readDestiny();
 int calcUltRegDestiny(FILE *archivo_destiny);
+
 /*Menu*/
 int menuTicket();
 void StartTicket();

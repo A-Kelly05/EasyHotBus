@@ -5,8 +5,7 @@
 #define MAX 100
 using namespace std;
 
-typedef struct
-{
+typedef struct {
     char busId[5];
     char busPlate[8];
     int busYear;
@@ -16,9 +15,10 @@ typedef struct
     char busWheel[10];
     char busjobs[50];
     float busKM;
-} Bus;
+}Bus; 
 
 Bus Buses[MAX];
+
 int lastRegBus = 0;
 
 /*Bus Regiter*/
@@ -34,14 +34,18 @@ Bus getBus(int pos);
 void updateBus(Bus bus, int pos);
 /*Delete*/
 void deleteBus(int pos);
-/*Menu Bus*/
+/*Menu User*/
 int menuBus();
 void StartBuses();
-/*Archivos Bus*/
+/*Archivos User*/
 FILE *BusesRegistration;
 void saveBus();
 void readBus();
 int calcUltRegBus(FILE *archivo_bus);
+
+/*Menu Archivo Principal*/
+void menuPrincipal();
+int principal();
 
 void addBus(Bus bus)
 {
@@ -71,7 +75,7 @@ void showBus(int pos)
     cout << "KM Recorridos " << Buses[pos].busKM << endl;
 }
 
-Bus getBus(int pos)
+Bus obtBus(int pos)
 {
     return Buses[pos];
 }
@@ -379,14 +383,14 @@ void StartBuses()
 
 void saveBus()
 {
-    BusesRegistration = fopen("bus.bin", "wb");
+    BusesRegistration = fopen("datos.bin", "wb");
     fwrite(Buses, sizeof(Bus), lastRegBus, BusesRegistration);
     fclose(BusesRegistration);
 }
 
 void readBus()
 {
-    BusesRegistration = fopen("bus.bin", "rb");
+    BusesRegistration = fopen("datos.bin", "rb");
     if (BusesRegistration == NULL)
     {
         return;
