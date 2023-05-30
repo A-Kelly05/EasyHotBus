@@ -44,7 +44,7 @@ void StartPrincipal()
         switch (op)
         {
         case 1: StartBuses();
-                break;
+            break;
         case 2: startUse();
             break;
         case 3: StartTicket();
