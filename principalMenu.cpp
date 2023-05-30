@@ -1,5 +1,5 @@
 #include<iostream>
-#include "buses/busF.cpp"
+#include "buses/FuncionBus.cpp"
 #include "tickets/ticket.cpp"
 #include "schedules/schedule.cpp"
 #include "users/user.cpp"
@@ -10,7 +10,7 @@ using namespace std;
 int MenuP();
 void StartPrincipal();
 
-int menuBus()
+int MenuP()
 {
     int op;
 

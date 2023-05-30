@@ -1,7 +1,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <string.h>
-#include "../auxiliar.h"
+#include "auxiliaruser.h"
 #define MAX 100
 using namespace std;
 

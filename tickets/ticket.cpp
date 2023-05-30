@@ -2,7 +2,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <string.h>
-#include "../auxiliar.h"
+#include "auxiliarticket.h"
 
 #define MAX 14
 using namespace std;
@@ -20,12 +20,12 @@ typedef struct
     int day;
     int month;
     int year;
-} date;
+} Fecha;
 
 typedef struct
 {
     char idF[5];
-    date dateF;
+    Fecha dateF;
     int horario;
     int cantT;
     priceTicket ticket;
@@ -52,7 +52,6 @@ int searchFactura(char id[]);
 void printFactura(int pos, int pos1, float price);
 
 /*Dia*/
-void showDay(int pos);
 void showDate(date thisDate);
 
 /*Archivo Factura*/
@@ -126,13 +125,21 @@ void ShowAll()
     cout << "Ultimo registro...\n";
 }
 
-void showDay(int pos)
-{
-    gotoxy(60, 5);
-}
-
 void showDate()
 {
+    float monto=0;
+    Fecha fecha;
+    gotoxy(60,4);
+    cout << "Dime la fecha a buscar: ";
+    scanf("%d/%d/%d", &fecha.day, &fecha.month, &fecha.year);
+    for (int i = 0; i < lastRegFact; i++)
+    {
+        if (Fact[i].dateF == fecha)
+        {
+            monto+= Fact[i].total;
+        }
+    }
+    
 }
 
 void addFactura(factura F)

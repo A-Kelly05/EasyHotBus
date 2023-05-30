@@ -1,8 +1,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <string.h>
-#include "../auxiliar.h"
-#include "../buses/busF.cpp"
+#include "auxiliarsche.h"
 #define MAX 100
 using namespace std;
 
@@ -27,6 +26,7 @@ void editSchedule(schedule Horario, int pos);
 int searchSchedule(char cale[]);
 /*get Schedule*/
 schedule GetSchedule(int pos);
+Colectivo BuscaBus(int pos);
 /*Delete*/
 void deleteSchedule(int pos);
 /*Statsbus*/
@@ -71,6 +71,11 @@ int searchSchedule(char cale[])
 schedule GetSchedule(int pos)
 {
     return Calendar[pos];
+}
+
+Colectivo BuscaBus(int pos)
+{
+    return Buses[pos];
 }
 
 void deleteSchedule(int pos)
@@ -166,7 +171,7 @@ void Schedule()
     char ScheduleId[5], scheid[5], busId[5];
     char* busNum;
     schedule Horario;
-     Bus bus;
+    Colectivo bus;
     readSchedule();
     do
     {
@@ -180,7 +185,7 @@ void Schedule()
             cout << "Escribe el # del Bus: ";
             cin >> busId;
             pos = isBus(busId);
-            bus;
+            bus = BuscaBus(pos);
             busNum = bus.busId;
             Horario.busId = busNum;
             gotoxy(60, 5);
