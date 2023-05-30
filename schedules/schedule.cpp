@@ -144,7 +144,7 @@ int MenuSchedule()
 
     gotoxy2(60, 5);
     cout << " Itinerario - Transporte David\n";
-    gotoxy2(71, 6);
+    gotoxy2(60, 6);
     cout << "Cantidad de registros: " << lastRegSche << endl;
     gotoxy2(60, 9);
     cout << " 1. Agregar Horario";
@@ -168,7 +168,7 @@ int MenuSchedule()
 void Schedule()
 {
     int op, pos, resp;
-    char ScheduleId[5], scheid[5], busId[5];
+    char scheid[5], busId[5];
     char* busNum;
     schedule Horario;
     Colectivo bus;
@@ -182,6 +182,7 @@ void Schedule()
         {
         case 1:
             system("cls || clear");
+            gotoxy2(60,4);
             cout << "Escribe el # del Bus: ";
             cin >> busId;
             pos = isBus(busId);
@@ -291,7 +292,7 @@ void Schedule()
         
         case 4:
              system("cls||clear");
-            gotoxy2(60, 5);
+            gotoxy2(60, 4);
             cout << "Escribe el # a buscar: ";
             scanf(" %[^\n]", scheid);
             pos = searchSchedule(scheid);
