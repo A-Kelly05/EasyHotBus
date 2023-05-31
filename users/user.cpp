@@ -282,7 +282,7 @@ int menuUser()
                 pos = isUser(id);
                 Use = getUser(pos);
                 gotoxy4(60, 7);
-                cout << "¿Realmente deseas eliminar el usuario: " << Use.name << " " << Use.lastname << "?\n";
+                cout << "Realmente deseas eliminar el usuario: " << Use.name << " " << Use.lastname << "?\n";
                 gotoxy4(60, 8);
                 cout << "Escribe 1 para SI o 2 para NO: ";
                 gotoxy4(92, 8);
