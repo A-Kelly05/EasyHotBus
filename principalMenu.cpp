@@ -36,6 +36,11 @@ int MenuP()
 void StartPrincipal()
 {
     int op;
+    readUser();
+    startBuses();
+    readFactura();
+    readDestiny();
+    readSchedule();
     do
     {
         system("cls||clear");
@@ -43,7 +48,7 @@ void StartPrincipal()
         op = MenuP();
         switch (op)
         {
-        case 1: StartBuses();
+        case 1: startBuses();
             break;
         case 2: startUse();
             break;

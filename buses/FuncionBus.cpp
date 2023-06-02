@@ -2,20 +2,9 @@
 #include <stdio.h>
 #include <string.h>
 #include "auxiliarbus.h"
+#include "structurabus.h"
 #define MAX 100
 using namespace std;
-
-typedef struct {
-    char busId[5];
-    char busPlate[8];
-    int busYear;
-    int Capacity;
-    char busmotor[50];
-    char bustransmission[50];
-    char busWheel[10];
-    char busjobs[50];
-    float busKM;
-}Colectivo;
 
 Colectivo Buses[MAX];
 
@@ -37,7 +26,7 @@ void updateBus(Colectivo bus, int pos);
 void deleteBus(int pos);
 /*Menu User*/
 int menuBus();
-void StartBuses();
+void startBuses();
 /*Archivos User*/
 FILE *BusesRegistration;
 void saveBus();
@@ -65,9 +54,9 @@ void showBus(int pos)
     gotoxy1(60, 8);
     cout << "Capacidad: " << Buses[pos].Capacity << endl;
     gotoxy1(60, 9);
-    cout << "Motor: " << Buses[pos].busmotor << endl;
+    cout << "Motor: " << Buses[pos].busMotor << endl;
     gotoxy1(60, 10);
-    cout << "Trasmisión: " << Buses[pos].bustransmission << endl;
+    cout << "Trasmisión: " << Buses[pos].busTransmission << endl;
     gotoxy1(60, 11);
     cout << "Model de Llantas: " << Buses[pos].busWheel << endl;
     gotoxy1(60, 12);
@@ -141,8 +130,8 @@ void startBus(int pos)
     strcpy(Buses[pos].busPlate, "");
     Buses[pos].busYear = 0;
     Buses[pos].Capacity = 0;
-    strcpy(Buses[pos].busmotor, "");
-    strcpy(Buses[pos].bustransmission, "");
+    strcpy(Buses[pos].busMotor, "");
+    strcpy(Buses[pos].busTransmission, "");
     strcpy(Buses[pos].busWheel, "");
     strcpy(Buses[pos].busjobs, "");
     Buses[pos].busKM = 0.00;
@@ -177,12 +166,11 @@ int menuBus()
     return op;
 }
 
-void StartBuses()
+void startBuses()
 {
     int op, pos, resp;
     char busId[5];
     Colectivo bus;
-    readBus();
     do
     {
         system("cls||clear");
@@ -219,9 +207,9 @@ void StartBuses()
             gotoxy1(71, 8);
             cin >> bus.Capacity;
             gotoxy1(67, 9);
-            scanf(" %[^\n]", bus.busmotor);
+            scanf(" %[^\n]", bus.busMotor);
             gotoxy1(72, 10);
-            scanf(" %[^\n]", bus.bustransmission);
+            scanf(" %[^\n]", bus.busTransmission);
             gotoxy1(79, 11);
             scanf(" %[^\n]", bus.busWheel);
             gotoxy1(74, 12);
@@ -310,9 +298,9 @@ void StartBuses()
             gotoxy1(71, 17);
             cin >> bus.Capacity;
             gotoxy1(67, 18);
-            scanf(" %[^\n]", bus.busmotor);
+            scanf(" %[^\n]", bus.busMotor);
             gotoxy1(72, 19);
-            scanf(" %[^\n]", bus.bustransmission);
+            scanf(" %[^\n]", bus.busTransmission);
             gotoxy1(79, 20);
             scanf(" %[^\n]", bus.busWheel);
             gotoxy1(74, 21);
@@ -339,7 +327,7 @@ void StartBuses()
             pos = isBus(busId);
             bus = dameUnBus(pos);
             gotoxy1(60, 6);
-            cout << "¿Realmente deseas eliminar el Bus #" << bus.busId << "?\n";
+            cout << "Realmente deseas eliminar el Bus #" << bus.busId << "?\n";
             gotoxy1(60, 7);
             cout << "Escribe 1 para SI o 2 para NO: ";
             gotoxy1(91, 7);
