@@ -2,26 +2,9 @@
 #include <stdio.h>
 #include <string.h>
 #include "auxiliaruser.h"
+#include "structurauser.h"
 #define MAX 100
 using namespace std;
-
-typedef struct
-{
-    int day;
-    int month;
-    int year;
-} date;
-typedef struct
-{
-    char idUse[9];
-    char name[30];
-    char lastname[30];
-    date birth;
-    char idCard[16];
-    int Bus;
-    char job[15];
-    float Salary;
-} Username;
 
 Username Users[MAX];
 int lastReg = 0;
@@ -296,7 +279,7 @@ int menuUser()
                 else
                 {
                     gotoxy4(60, 10);
-                    cout << "Operaciòn cancelada.... \n";
+                    cout << "Operacion cancelada.... \n";
                 }
                 system("pause");
                 break;
