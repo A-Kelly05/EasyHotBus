@@ -1,4 +1,4 @@
-/* Para la ejeuiones de diferentes sistemas operativos*/
+/* Para la ejecuciones de diferentes sistemas operativos*/
 
 #ifdef _WIN32 // Para Windows
 #include <windows.h>
