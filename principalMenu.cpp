@@ -57,6 +57,7 @@ void StartPrincipal()
         case 4: Schedule();
             break;
         case 5:
+            gotoxy(60, 17);
             cout<< "Gracias por preferirnos, Vuelva pronto\n";
             break;
         }
