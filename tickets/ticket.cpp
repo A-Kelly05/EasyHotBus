@@ -3,38 +3,10 @@
 #include <stdio.h>
 #include <string.h>
 #include "auxiliarticket.h"
+#include "structuraTikect.h"
 
 #define MAX2 14
 using namespace std;
-
-typedef struct
-{
-    char id[5];
-    char origen[50];
-    char destino[50];
-    float price;
-} priceTicket;
-
-typedef struct
-{
-    int day;
-    int month;
-    int year;
-} Fecha;
-
-typedef struct
-{
-    char idF[5];
-    Fecha dateF;
-    char horario[6];
-    int cantT;
-    char* idD;
-    char* destinoF;
-    char* origenF;
-    float priceDest;
-    float total;
-
-} factura;
 
 factura Fact[500];
 priceTicket PT[MAX2];
