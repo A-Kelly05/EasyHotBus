@@ -1,3 +1,4 @@
+/*Estructura de tikect */
 typedef struct
 {
     char id[5];
