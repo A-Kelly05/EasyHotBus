@@ -3,8 +3,6 @@
 #include <string.h>
 #include "auxiliarsche.h"
 #include "structuraSche.h"
-#include "../buses/FuncionBus.cpp"
-#include "../buses/structurabus.h"
 #define MAX 100
 using namespace std;
 
@@ -20,6 +18,7 @@ int searchSchedule(char cale[]);
 /*get Schedule*/
 schedule GetSchedule(int pos);
 Colectivo BuscaBus(int pos);
+int hayBus(char num1[]);
 /*Delete*/
 void deleteSchedule(int pos);
 /*Statsbus*/
@@ -69,6 +68,20 @@ schedule GetSchedule(int pos)
 Colectivo BuscaBus(int pos)
 {
     return Buses[pos];
+}
+
+int hayBus(char num1[])
+{
+    int posicion1 = 0;
+    for (int i = 0; i < lastRegBus; i++)
+    {
+        if (strcmp(num1, Buses[i].busId) == 0)
+        {
+            posicion1 = i;
+            break;
+        }
+    }
+    return posicion1;
 }
 
 void deleteSchedule(int pos)
@@ -178,7 +191,7 @@ void Schedule()
             gotoxy2(60,4);
             cout << "Escribe el # del Bus: ";
             cin >> busId;
-            pos = isBus(busId);
+            pos = hayBus(busId);
             bus = BuscaBus(pos);
             busNum = bus.busId;
             Horario.busId = busNum;

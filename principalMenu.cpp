@@ -35,7 +35,7 @@ int MenuP()
 
 void StartPrincipal()
 {
-    int op;
+    int op=0;
     readUser();
     startBuses();
     readFactura();
@@ -44,17 +44,20 @@ void StartPrincipal()
     do
     {
         system("cls||clear");
-
-        op = MenuP();
+        op =  MenuP();
         switch (op)
         {
-        case 1: startBuses();
+        case 1: 
+            startBuses();
             break;
-        case 2: startUse();
+        case 2: 
+            startUse();
             break;
-        case 3: StartTicket();
+        case 3: 
+            StartTicket();
             break;
-        case 4: Schedule();
+        case 4: 
+            Schedule();
             break;
         case 5:
             gotoxy(60, 17);

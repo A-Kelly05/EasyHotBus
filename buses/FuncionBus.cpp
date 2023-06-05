@@ -6,9 +6,9 @@
 #define MAX 100
 using namespace std;
 
-Colectivo Buses[MAX];
 
-int lastRegBus = 0;
+
+
 
 /*Bus Regiter*/
 /*Create*/

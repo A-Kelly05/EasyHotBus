@@ -1,4 +1,4 @@
-
+#define MAX 100
 
 typedef struct {
     char busId[5];
@@ -11,3 +11,7 @@ typedef struct {
     char busjobs[50];
     float busKM;
 }Colectivo;
+
+Colectivo Buses[MAX];
+
+int lastRegBus = 0;
