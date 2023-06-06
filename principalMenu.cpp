@@ -7,17 +7,16 @@
 using namespace std;
 
 
-int MenuP();
-void StartPrincipal();
+int menuP();
+void startPrincipal();
 
-int MenuP()
+int  menuP()
 {
-    int op;
-
+    int op=0;
     gotoxy(75, 6);
     cout << "Transporte David\n";
     gotoxy(60, 9);
-    cout << " 1. Información Administrativa\n";
+    cout << " 1. Informacion Administrativa\n";
     gotoxy(60, 10);
     cout << " 2. Informacion Usuario\n";
     gotoxy(60, 11);
@@ -33,18 +32,17 @@ int MenuP()
     return op;
 }
 
-void StartPrincipal()
+void startPrincipal()
 {
-    int op=0;
+    int op=0; 
     readUser();
-    startBuses();
     readFactura();
     readDestiny();
     readSchedule();
     do
     {
         system("cls||clear");
-        op =  MenuP();
+        op =  menuP();
         switch (op)
         {
         case 1: 

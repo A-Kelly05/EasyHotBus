@@ -6,19 +6,14 @@
 #define MAX 100
 using namespace std;
 
-
-
-
-
 /*Bus Regiter*/
 /*Create*/
 void addBus(Colectivo bus);
 /*Read*/
 void showBus(int pos);
 int isBus(char id[]);
-void showBuses();
 void startBus(int pos);
-//Colectivo getBus(int pos);
+// Colectivo getBus(int pos);
 Colectivo dameUnBus(int i);
 /*Update*/
 void updateBus(Colectivo bus, int pos);
@@ -56,13 +51,13 @@ void showBus(int pos)
     gotoxy1(60, 9);
     cout << "Motor: " << Buses[pos].busMotor << endl;
     gotoxy1(60, 10);
-    cout << "Trasmisión: " << Buses[pos].busTransmission << endl;
+    cout << "Trasmision: " << Buses[pos].busTransmission << endl;
     gotoxy1(60, 11);
     cout << "Model de Llantas: " << Buses[pos].busWheel << endl;
     gotoxy1(60, 12);
-    cout << "Trabajadores " << Buses[pos].busjobs << endl;
+    cout << "Trabajadores: " << Buses[pos].busjobs << endl;
     gotoxy1(60, 13);
-    cout << "KM Recorridos " << Buses[pos].busKM << endl;
+    cout << "KM Recorridos: " << Buses[pos].busKM << endl;
 }
 
 Colectivo dameUnBus(int pos)
@@ -82,25 +77,6 @@ int isBus(char num[])
         }
     }
     return posicion;
-}
-
-void showBuses()
-{
-    system("cls||clear");
-    if (lastRegBus == 0)
-    {
-        gotoxy1(60, 5);
-        cout << "No hay registros\n";
-        return;
-    }
-    for (int i = 0; i < lastRegBus; i++)
-    {
-        gotoxy1(60, 4);
-        cout << "=========================\n";
-        showBus(i);
-        gotoxy1(60, 15);
-        cout << "Ultimo registro...\n";
-    }
 }
 
 void updateBus(Colectivo bus, int pos)
@@ -154,14 +130,12 @@ int menuBus()
     gotoxy1(60, 12);
     cout << " 4. Eliminar Bus \n";
     gotoxy1(60, 13);
-    cout << " 5. Buscar Bus \n";
+    cout << " 5. Mostrar Bus \n";
     gotoxy1(60, 14);
-    cout << " 6. Mostrar todos los Buses \n";
+    cout << " 6. Salir \n";
     gotoxy1(60, 15);
-    cout << " 7. Salir \n";
-    gotoxy1(60, 16);
     cout << " Digite la opcion: ";
-    gotoxy1(79, 16);
+    gotoxy1(79, 15);
     cin >> op;
     return op;
 }
@@ -202,7 +176,7 @@ void startBuses()
             scanf(" %[^\n]", bus.busId);
             gotoxy1(67, 6);
             scanf(" %[^\n]", bus.busPlate);
-            gotoxy1(65, 7);
+            gotoxy1(66, 7);
             cin >> bus.busYear;
             gotoxy1(71, 8);
             cin >> bus.Capacity;
@@ -269,43 +243,43 @@ void startBuses()
             scanf(" %[^\n]", busId);
             pos = isBus(busId);
             showBus(pos);
-            gotoxy1(60, 13);
-            cout << "DATOS A EDITAR\n";
             gotoxy1(60, 14);
-            cout << "Bus David #:";
+            cout << "DATOS A EDITAR\n";
             gotoxy1(60, 15);
-            cout << "Placa: ";
+            cout << "Bus David #:";
             gotoxy1(60, 16);
-            cout << "Año: ";
+            cout << "Placa: ";
             gotoxy1(60, 17);
-            cout << "Capacidad: ";
+            cout << "Año: ";
             gotoxy1(60, 18);
-            cout << "Motor: ";
+            cout << "Capacidad: ";
             gotoxy1(60, 19);
-            cout << "Trasmision: ";
+            cout << "Motor: ";
             gotoxy1(60, 20);
-            cout << "Modelo de Llantas: ";
+            cout << "Trasmision: ";
             gotoxy1(60, 21);
-            cout << "Trabajadores: ";
+            cout << "Modelo de Llantas: ";
             gotoxy1(60, 22);
+            cout << "Trabajadores: ";
+            gotoxy1(60, 23);
             cout << "KM Recorridos: ";
-            gotoxy1(73, 14);
+            gotoxy1(73, 15);
             scanf(" %[^\n]", bus.busId);
-            gotoxy1(68, 15);
+            gotoxy1(67, 16);
             scanf(" %[^\n]", bus.busPlate);
-            gotoxy1(65, 16);
+            gotoxy1(66, 17);
             cin >> bus.busYear;
-            gotoxy1(71, 17);
+            gotoxy1(71, 18);
             cin >> bus.Capacity;
-            gotoxy1(67, 18);
+            gotoxy1(67, 19);
             scanf(" %[^\n]", bus.busMotor);
-            gotoxy1(72, 19);
+            gotoxy1(72, 20);
             scanf(" %[^\n]", bus.busTransmission);
-            gotoxy1(79, 20);
+            gotoxy1(79, 21);
             scanf(" %[^\n]", bus.busWheel);
-            gotoxy1(74, 21);
+            gotoxy1(74, 22);
             scanf(" %[^\n]", bus.busjobs);
-            gotoxy1(75, 22);
+            gotoxy1(75, 23);
             cin >> bus.busKM;
             updateBus(bus, pos);
             gotoxy1(60, 23);
@@ -355,11 +329,6 @@ void startBuses()
             system("pause");
             break;
         case 6:
-            system("cls||clear");
-            showBuses();
-            system("pause");
-            break;
-        case 7:
             break;
         default:
             system("clear||cls");
@@ -367,27 +336,26 @@ void startBuses()
             system("pause");
             break;
         }
-    } while (op != 7);
+    } while (op != 6);
     saveBus();
 }
 
 void saveBus()
 {
-    BusesRegistration = fopen("datos.bin", "wb");
+    BusesRegistration = fopen("Bus.bin", "wb");
     fwrite(Buses, sizeof(Colectivo), lastRegBus, BusesRegistration);
     fclose(BusesRegistration);
 }
 
 void readBus()
 {
-    BusesRegistration = fopen("datos.bin", "rb");
+    BusesRegistration = fopen("Bus.bin", "rb");
     if (BusesRegistration == NULL)
     {
         return;
     }
     lastRegBus = calcUltRegBus(BusesRegistration);
     fread(Buses, sizeof(Colectivo), MAX, BusesRegistration);
-
     fclose(BusesRegistration);
 }
 

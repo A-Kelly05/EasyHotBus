@@ -4,6 +4,6 @@ using namespace std;
 
 int main()
 {
-    StartPrincipal();
+    startPrincipal();
     return 0;
 }

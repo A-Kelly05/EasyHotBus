@@ -19,7 +19,6 @@ void addDestiny(priceTicket destiny);
 void editDestiny();
 int searchDestiny(char id[]);
 void ShowDestiny(int pos);
-void ShowAll();
 
 /*Factura*/
 void addFactura(factura F);
@@ -47,7 +46,7 @@ void StartTicket();
 
 void addDestiny(priceTicket destiny)
 {
-    PT[lastRegDestiny]=destiny;
+    PT[lastRegDestiny] = destiny;
     lastRegDestiny++;
 }
 
@@ -55,7 +54,6 @@ void editDestiny(priceTicket destiny, int pos)
 {
     PT[pos] = destiny;
 }
-
 
 int searchDestiny(char num[])
 {
@@ -82,40 +80,23 @@ void ShowDestiny(int pos)
     gotoxy3(60, 8);
     cout << "Precio Ticket: " << PT[pos].price << endl;
 }
-void ShowAll()
-{
-    system("cls||clear");
-    if (lastRegDestiny == 0)
-    {
-        gotoxy3(60, 5);
-        cout << "No hay registros\n";
-        return;
-    }
-    for (int i = 0; i < lastRegDestiny; i++)
-    {
-        gotoxy3(60, 4);
-        cout << "=========================\n";
-        ShowDestiny(i);
-    }
-    cout << "Ultimo registro...\n";
-}
 
 void showDate()
 {
-    float monto=0;
+    float monto = 0;
     Fecha fecha;
-    gotoxy3(60,4);
+    gotoxy3(60, 4);
     cout << "Dime la fecha a buscar: ";
     scanf("%d/%d/%d", &fecha.day, &fecha.month, &fecha.year);
     for (int i = 0; i < lastRegFact; i++)
     {
         if (fecha.day == Fact[i].dateF.day && fecha.month == Fact[i].dateF.month && fecha.year == Fact[i].dateF.year)
         {
-            monto+= Fact[i].total; 
+            monto += Fact[i].total;
         }
     }
-    gotoxy3(60,6);
-    cout<< "Monto C$: " << monto << endl;
+    gotoxy3(60, 6);
+    cout << "Monto C$: " << monto << endl;
 }
 
 void addFactura(factura F)
@@ -140,13 +121,13 @@ int searchFactura(char id[])
 void printFactura(int pos)
 {
     gotoxy3(60, 5);
-    cout << " ID Factura " << Fact[pos].idF << endl;
+    cout << "ID Factura: " << Fact[pos].idF << endl;
     gotoxy3(60, 6);
     cout << "Fecha: " << Fact[pos].dateF.day << "/" << Fact[pos].dateF.month << "/" << Fact[pos].dateF.year << endl;
     gotoxy3(60, 7);
     cout << "ID destino " << Fact[pos].idD << endl;
     gotoxy3(60, 8);
-    cout << " Horario: " << Fact[pos].horario << endl;
+    cout << "Horario: " << Fact[pos].horario << endl;
     gotoxy3(60, 9);
     cout << "Origen:" << Fact[pos].origenF << endl;
     gotoxy3(60, 10);
@@ -172,7 +153,7 @@ int menuTicket()
     gotoxy3(60, 10);
     cout << " 2. Editar Destino \n";
     gotoxy3(60, 11);
-    cout << " 3. Mostrar Destinos \n";
+    cout << " 3. Mostrar Destino \n";
     gotoxy3(60, 12);
     cout << " 4. Add Factura \n";
     gotoxy3(60, 13);
@@ -214,13 +195,13 @@ void StartTicket()
             cout << "Destino: ";
             gotoxy3(60, 8);
             cout << "Precio Ticket: ";
-            gotoxy3(73, 5);
+            gotoxy3(72, 5);
             scanf(" %[^\n]", destiny.id);
-            gotoxy3(67, 6);
+            gotoxy3(68, 6);
             scanf(" %[^\n]", destiny.origen);
             gotoxy3(69, 7);
             scanf(" %[^\n]", destiny.destino);
-            gotoxy3(77, 8);
+            gotoxy3(75, 8);
             cin >> destiny.price;
             addDestiny(destiny);
             system("pause");
@@ -243,13 +224,13 @@ void StartTicket()
             cout << "Destino: ";
             gotoxy3(60, 14);
             cout << "Precio Ticket: ";
-            gotoxy3(73, 11);
+            gotoxy3(72, 11);
             scanf(" %[^\n]", destiny.id);
-            gotoxy3(67, 12);
+            gotoxy3(68, 12);
             scanf(" %[^\n]", destiny.origen);
             gotoxy3(69, 13);
             scanf(" %[^\n]", destiny.destino);
-            gotoxy3(77, 14);
+            gotoxy3(75, 14);
             cin >> destiny.price;
             editDestiny(destiny, pos);
             gotoxy3(60, 19);
@@ -259,10 +240,13 @@ void StartTicket()
 
         case 3:
             system("cls||clear");
-            ShowAll();
+            gotoxy3(60, 4);
+            cout << "Escribe el Id del Destino a buscar: ";
+            scanf(" %[^\n]", DestID);
+            pos = searchDestiny(DestID);
+            ShowDestiny(pos);
             system("pause");
             break;
-        
         case 4:
             system("cls||clear");
             gotoxy3(60, 3);
@@ -289,33 +273,33 @@ void StartTicket()
             cout << "Total:";
             gotoxy3(72, 5);
             scanf(" %[^\n]", F.idF);
-            gotoxy3(68, 6);
+            gotoxy3(67, 6);
             scanf("%d/%d/%d", &F.dateF.day, &F.dateF.month, &F.dateF.year);
             gotoxy3(73, 7);
-            F.idD= PT[pos1].id;
-            cout<< F.idD;
-            gotoxy3(70, 8);
+            F.idD = PT[pos1].id;
+            cout << F.idD;
+            gotoxy3(69, 8);
             scanf(" %[^\n]", F.horario);
-            gotoxy3(70, 9);
+            gotoxy3(68, 9);
             F.origenF = PT[pos1].origen;
-            cout<< F.origenF;
-            gotoxy3(71, 10);
+            cout << F.origenF;
+            gotoxy3(69, 10);
             F.destinoF = PT[pos1].destino;
-            cout<< F.destinoF ;
-            gotoxy3(81, 11);
+            cout << F.destinoF;
+            gotoxy3(80, 11);
             cin >> F.cantT;
-            gotoxy3(80, 12);
-            F.priceDest=PT[pos1].price;
-            cout<< F.priceDest;
+            gotoxy3(79, 12);
+            F.priceDest = PT[pos1].price;
+            cout << F.priceDest;
             F.total = F.cantT * F.priceDest;
-            gotoxy3(69, 13);
-            cout<<F.total << endl;
+            gotoxy3(67, 13);
+            cout << F.total << endl;
             addFactura(F);
             system("pause");
             break;
         case 5:
             system("cls||clear");
-            gotoxy3(60, 4);
+            gotoxy3(60, 3);
             cout << "Escribe el Id de la Factura: ";
             scanf(" %[^\n]", FactId);
             pos = searchDestiny(FactId);
@@ -347,7 +331,7 @@ void readDestiny()
     {
         return;
     }
-    lastRegDestiny= calcUltRegDestiny(DestinyRegistration);
+    lastRegDestiny = calcUltRegDestiny(DestinyRegistration);
     fread(PT, sizeof(priceTicket), MAX2, DestinyRegistration);
 
     fclose(DestinyRegistration);
@@ -368,21 +352,21 @@ int calcUltRegDestiny(FILE *archivo_destiny)
 void saveFactura()
 {
     FacturaRegistration = fopen("factura.bin", "wb");
-    fwrite(Fact, sizeof(factura), lastRegFact, FacturaRegistration );
+    fwrite(Fact, sizeof(factura), lastRegFact, FacturaRegistration);
     fclose(FacturaRegistration);
 }
 
 void readFactura()
 {
-    FacturaRegistration  = fopen("factura.bin", "rb");
-    if (FacturaRegistration  == NULL)
+    FacturaRegistration = fopen("factura.bin", "rb");
+    if (FacturaRegistration == NULL)
     {
         return;
     }
-    lastRegFact= calcUltRegFactura(FacturaRegistration );
-    fread(Fact, sizeof(factura), 500, FacturaRegistration );
+    lastRegFact = calcUltRegFactura(FacturaRegistration);
+    fread(Fact, sizeof(factura), 500, FacturaRegistration);
 
-    fclose(FacturaRegistration );
+    fclose(FacturaRegistration);
 }
 
 int calcUltRegFactura(FILE *archivo_factura)

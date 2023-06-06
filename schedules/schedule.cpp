@@ -25,7 +25,6 @@ void deleteSchedule(int pos);
 void startSchedule(int pos);
 /*Show*/
 void showSchedule(int pos);
-void showSchedules();
 /*Menu*/
 int MenuSchedule();
 void Schedule();
@@ -86,7 +85,7 @@ int hayBus(char num1[])
 
 void deleteSchedule(int pos)
 {
-  if (pos == lastRegSche)
+    if (pos == lastRegSche)
     {
         gotoxy2(60, 5);
         cout << "No hay registro\n";
@@ -115,33 +114,15 @@ void showSchedule(int pos)
     gotoxy2(60, 5);
     cout << "Horario Id #: " << Calendar[pos].horarioId << endl;
     gotoxy2(60, 6);
-    cout << "Bus David #: " << Calendar[pos].busId<< endl;
+    cout << "Bus David #: " << Calendar[pos].busId << endl;
     gotoxy2(60, 7);
-    cout << "Origen: " << Calendar[pos].origen<< endl;
+    cout << "Origen: " << Calendar[pos].origen << endl;
     gotoxy2(60, 8);
     cout << "Destino: " << Calendar[pos].destino << endl;
     gotoxy2(60, 9);
-    cout << "Hora Salida: " << Calendar[pos].hora_origen<< endl;
+    cout << "Hora Salida: " << Calendar[pos].hora_origen << endl;
     gotoxy2(60, 10);
-    cout << "Hora Llegada: " << Calendar[pos].hora_destino<< endl;
-}
-
-void showSchedules()
-{
-    system("cls||clear");
-    if (lastRegSche == 0)
-    {
-        gotoxy2(60, 5);
-        cout << "No hay registros\n";
-        return;
-    }
-    for (int i = 0; i < lastRegSche; i++)
-    {
-        gotoxy2(60, 4);
-        cout << "=========================\n";
-        showSchedule(i);
-    }
-    cout << "Ultimo registro...\n";
+    cout << "Hora Llegada: " << Calendar[pos].hora_destino << endl;
 }
 
 int MenuSchedule()
@@ -161,9 +142,7 @@ int MenuSchedule()
     gotoxy2(60, 12);
     cout << " 4. Mostrar Horario \n";
     gotoxy2(60, 13);
-    cout << " 5. Mostrar todos los Horarios \n";
-    gotoxy2(60, 14);
-    cout << " 6. Salir \n";
+    cout << " 5. Salir \n";
     gotoxy2(60, 16);
     cout << " Digite la opcion: ";
     gotoxy2(79, 16);
@@ -175,7 +154,7 @@ void Schedule()
 {
     int op, pos, resp;
     char scheid[5], busId[5];
-    char* busNum;
+    char *busNum;
     schedule Horario;
     Colectivo bus;
     readSchedule();
@@ -188,7 +167,7 @@ void Schedule()
         {
         case 1:
             system("cls || clear");
-            gotoxy2(60,4);
+            gotoxy2(60, 4);
             cout << "Escribe el # del Bus: ";
             cin >> busId;
             pos = hayBus(busId);
@@ -207,17 +186,17 @@ void Schedule()
             cout << "Hora Salida: ";
             gotoxy2(60, 10);
             cout << "Hora Llegada: ";
-            gotoxy2(73, 5);
+            gotoxy2(72, 5);
             scanf(" %[^\n]", Horario.horarioId);
             gotoxy2(75, 6);
             cout << Horario.busId;
-            gotoxy2(69, 7);
-            scanf(" %[^\n]", Horario.destino);
-            gotoxy2(70, 8);
+            gotoxy2(68, 7);
             scanf(" %[^\n]", Horario.origen);
-            gotoxy2(74, 9);
+            gotoxy2(69, 8);
+            scanf(" %[^\n]", Horario.destino);
+            gotoxy2(73, 9);
             scanf(" %[^\n]", Horario.hora_origen);
-            gotoxy2(76, 10);
+            gotoxy2(74, 10);
             scanf(" %[^\n]", Horario.hora_destino);
             addSchedule(Horario);
             system("pause");
@@ -244,17 +223,17 @@ void Schedule()
             cout << "Hora Salida: ";
             gotoxy2(60, 18);
             cout << "Hora Llegada: ";
-            gotoxy2(73, 13);
+            gotoxy2(72, 13);
             scanf(" %[^\n]", Horario.horarioId);
-            gotoxy2(75, 14);
-           scanf(" %[^\n]", Horario.busId);
+            gotoxy2(73, 14);
+            scanf(" %[^\n]", Horario.busId);
             gotoxy2(69, 15);
-            scanf(" %[^\n]", Horario.destino);
-            gotoxy2(70, 16);
             scanf(" %[^\n]", Horario.origen);
-            gotoxy2(74, 17);
+            gotoxy2(69, 16);
+            scanf(" %[^\n]", Horario.destino);
+            gotoxy2(73, 17);
             scanf(" %[^\n]", Horario.hora_origen);
-            gotoxy2(76, 18);
+            gotoxy2(74, 18);
             scanf(" %[^\n]", Horario.hora_destino);
             editSchedule(Horario, pos);
             gotoxy2(60, 20);
@@ -294,10 +273,10 @@ void Schedule()
                 cout << "Operaciòn cancelada.... \n";
             }
             system("pause");
-            break; 
-        
+            break;
+
         case 4:
-             system("cls||clear");
+            system("cls||clear");
             gotoxy2(60, 4);
             cout << "Escribe el # a buscar: ";
             scanf(" %[^\n]", scheid);
@@ -306,15 +285,9 @@ void Schedule()
             system("pause");
             break;
         case 5:
-          system("cls||clear");
-            showSchedules();
-            system("pause");
-            break;
-        
         }
-    } while (op != 6);
+    } while (op != 5);
     saveSchedule();
-
 }
 
 void saveSchedule()
@@ -331,7 +304,7 @@ void readSchedule()
     {
         return;
     }
-    lastRegSche= calcUltRegSchedule(ScheduleRegistration);
+    lastRegSche = calcUltRegSchedule(ScheduleRegistration);
     fread(Calendar, sizeof(schedule), MAX, ScheduleRegistration);
 
     fclose(ScheduleRegistration);
