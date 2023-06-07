@@ -174,7 +174,7 @@ void startUse()
             scanf(" %[^\n]", Use.lastname);
             gotoxy4(92, 8);
             scanf("%d/%d/%d", &Use.birth.day, &Use.birth.month, &Use.birth.year);
-            gotoxy4(66, 9);
+            gotoxy4(68, 9);
             scanf(" %[^\n]", Use.idCard);
             gotoxy4(65, 10);
             scanf("%d", &Use.Bus);
