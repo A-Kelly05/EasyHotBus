@@ -285,6 +285,7 @@ void Schedule()
             system("pause");
             break;
         case 5:
+         break;
         }
     } while (op != 5);
     saveSchedule();
